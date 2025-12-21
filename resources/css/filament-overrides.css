@@ -1,0 +1,84 @@
+/* Quitar el ancho máximo del contenedor principal */
+main.fi-main.fi-width-7xl {
+    max-width: 97% !important;
+    padding: 0 !important;
+}
+
+/* Opcional: quitar padding interno de los formularios y tablas */
+div.fi-page {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Opcional: tablas a full width */
+table {
+    width: 100% !important;
+}
+
+/* Formularios y cards a full width */
+div.fi-card {
+    width: 100% !important;
+}
+
+/* Estilos para imágenes de productos en tablas */
+.fi-ta-image img,
+.fi-ta-col-wrp img {
+    height: 3.5rem !important;
+    width: auto !important;
+    border-radius: 10px !important;
+    object-fit: cover !important;
+}
+
+/*widgets*/
+
+.code-snippet {
+    font-family: Monaco, Consolas, Courier New, monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    background: rgba(15, 23, 42, .8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, .2);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 20px #0000004d;
+    margin-top: 20px;
+}
+
+.arch-card {
+    border: 1px solid rgba(148, 163, 184, .35);
+    background: linear-gradient(180deg, rgba(255, 255, 255, .72), rgba(255, 255, 255, .55));
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+}
+
+.arch-card-title {
+    font-weight: 650;
+    letter-spacing: .2px;
+}
+
+.arch-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 130, 246, .25);
+    background: rgba(59, 130, 246, .08);
+    color: rgba(30, 64, 175, .95);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.fi-fo-repeater-actions .fi-btn {
+    border-radius: 999px !important;
+    padding: 2px 10px !important;
+    min-height: 24px !important;
+    font-size: 12px !important;
+    line-height: 1.25 !important;
+}
+
+.fi-fo-repeater-actions .fi-btn.fi-color-gray {
+    background: rgba(15, 23, 42, .04) !important;
+    border: 1px solid rgba(15, 23, 42, .10) !important;
+}

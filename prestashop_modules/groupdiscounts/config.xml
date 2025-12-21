@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>groupdiscounts</name>
+    <displayName><![CDATA[Group Discounts]]></displayName>
+    <version><![CDATA[1.0.0]]></version>
+    <description><![CDATA[Apply dynamic discounts based on customer groups from Laravel system]]></description>
+    <author><![CDATA[Your Company]]></author>
+    <tab><![CDATA[pricing]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+</module>

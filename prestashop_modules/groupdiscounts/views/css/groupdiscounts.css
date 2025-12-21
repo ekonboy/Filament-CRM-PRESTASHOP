@@ -1,0 +1,26 @@
+.group-discount-info {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background: #28a745;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.discount-badge {
+    font-weight: bold;
+}
+
+.group-name {
+    opacity: 0.9;
+    font-size: 11px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .group-discount-info {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
