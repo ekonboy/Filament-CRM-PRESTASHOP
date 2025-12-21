@@ -1,59 +1,32 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Exitus Management System (EMS) 🚀
+### Laravel 12 + Filament 4.3 + PrestaShop 8 Core
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es un **Panel de Control Avanzado (PIM/CRM)** diseñado para potenciar y optimizar una tienda PrestaShop 8 alojada en Siteground. Mientras que PrestaShop gestiona la venta al público, este sistema actúa como el "Cerebro de Gestión" para operaciones masivas, SEO, analítica de beneficios y automatización.
 
-## About Laravel
+## 🛠️ Stack Tecnológico
+- **Framework:** Laravel 12 (PHP 8.3+)
+- **Panel Administrativo:** Filament 4.3 (TALL Stack)
+- **Base de Datos:** MySQL (Conexión directa a tablas `soft_` de PrestaShop)
+- **Infraestructura:** Siteground Hosting (SSH, Git, Cron Jobs)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🌟 Características Principales
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Gestión de Precios Masivos (Bulk Pricing)
+- **Lógica de Grupos:** Aplicación de descuentos porcentuales por grupo de clientes con una sola regla, evitando la saturación de la base de datos.
+- **Cálculo Off-load:** Los cálculos se procesan en el subdominio de Laravel mediante Jobs, manteniendo la tienda principal rápida.
+- **Safe-Guard:** El precio base de PrestaShop (`soft_product.price`) es sagrado; los descuentos se gestionan en una capa lógica superior para permitir rollbacks instantáneos.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Dashboard de Diagnóstico de Catálogo
+- **Health Check:** Identificación visual de productos activos sin imágenes, sin stock o con SEO incompleto.
+- **Stock Real-Time:** Conexión directa a la tabla `soft_stock_available` para monitorizar el inventario físico real por combinaciones.
 
-## Learning Laravel
+### 3. Optimización SEO y Marketing
+- **Tracking Avanzado:** Herramientas de seguimiento de conversiones y comportamiento de usuario.
+- **Generación de Contenido:** (Próximamente) Integración con IA para descripciones automáticas.
+- **Mailings Segmentados:** Lógica de segmentación de clientes basada en el historial de pedidos de PrestaShop.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🚀 Instalación y Despliegue (Siteground)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. **Clonar y Subir:**
+   ```bash
+   git clone [https://github.com/tu-usuario/exitus-manager.git](https://github.com/tu-usuario/exitus-manager.git)
