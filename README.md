@@ -5,9 +5,13 @@ Este proyecto es un **Panel de Control Avanzado (PIM/CRM)** diseñado para poten
 
 ## 🛠️ Stack Tecnológico
 - **Framework:** Laravel 12 (PHP 8.3+)
+- **PrestaShop:** 8.2x
 - **Panel Administrativo:** Filament 4.3
 - **Base de Datos:** MySQL (Conexión directa a tablas de PrestaShop)
-- **Infraestructura:** Siteground Hosting (SSH, Git, Cron Jobs)
+- **Tailwind CSS:**
+- **Bootstrap 5:**
+- **JavaScript:**
+- **Vite:**
 
 ## 🌟 Características Principales
 
