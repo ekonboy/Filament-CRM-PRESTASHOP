@@ -52,7 +52,9 @@ class AdminPanelProvider extends PanelProvider
             )
             ->renderHook(
                 PanelsRenderHook::TOPBAR_LOGO_AFTER,
-                fn () => view('filament.partials.system-architecture-trigger')
+                fn () => request()->routeIs('filament.admin.resources.presta-specific-prices.index') 
+                    ? view('filament.partials.presta-specific-prices-architecture') 
+                    : view('filament.partials.system-architecture-trigger')
             )
             ->renderHook(
                 PanelsRenderHook::GLOBAL_SEARCH_AFTER,
