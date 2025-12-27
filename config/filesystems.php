@@ -29,6 +29,17 @@ return [
     */
 
     'disks' => [
+        // 'exitus_server' => [
+        //     'driver' => 'ftp',
+        //     'host' => env('EXITUS_FTP_HOST'),
+        //     'username' => env('EXITUS_FTP_USERNAME'),
+        //     'password' => env('EXITUS_FTP_PASSWORD'),
+        //     'port' => env('EXITUS_FTP_PORT', 21),
+        //     'root' => '/public_html/', // Asegúrate de poner la ruta raíz de tu FTP
+        //     'passive' => true,
+        //     'ssl' => false, // Cambia a true si usas SFTP/FTPS
+        //     'timeout' => 30,
+        // ],
 
         'local' => [
             'driver' => 'local',
@@ -41,7 +52,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

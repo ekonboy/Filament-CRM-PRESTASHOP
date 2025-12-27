@@ -1,10 +1,13 @@
-<div class="flex items-center gap-2">
-    <x-filament::icon-button
-        icon="heroicon-o-question-mark-circle"
-        color="gray"
-        size="sm"
-        x-on:click="$dispatch('open-modal', { id: 'presta-specific-prices-architecture' })"
-    />
+<div>
+    <div class="inline-flex items-center" style="margin-left:20px">
+        <x-filament::icon-button
+            icon="heroicon-o-hand-thumb-up"
+            color="gray"
+            size="lg"
+            tag="button"
+            x-on:click.stop.prevent="$dispatch('open-modal', { id: 'presta-specific-prices-architecture' })"
+        />
+    </div>
 
     <x-filament::modal
         id="presta-specific-prices-architecture"

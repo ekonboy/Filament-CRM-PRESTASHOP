@@ -22,11 +22,13 @@ use Illuminate\Database\Eloquent\Builder;
 class PrestaSpecificPriceResource extends Resource
 {
     protected static ?string $model = PrestaSpecificPrice::class;
+    
+    protected static ?string $navigationLabel = 'Specific Prices';
 
     // Tipado compatible con PHP 8.3 y Filament 4
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-ticket';
     
-    protected static ?int $navigationSort = 101;
+    protected static ?int $navigationSort = 10;
 
     public static function getEloquentQuery(): Builder
     {
@@ -89,7 +91,7 @@ class PrestaSpecificPriceResource extends Resource
 
                 TextColumn::make('reduction')
                     ->label('Descuento')
-                    ->formatStateUsing(fn($state) => round($state * 1, 0) . '%'),
+                    ->formatStateUsing(fn($state) => round($state * 100, 0) . '%'),
 
                 TextColumn::make('customText.promo_text')
                     ->label('Mensaje')

@@ -6,8 +6,11 @@ use App\Filament\Resources\MetasResource\Pages\EditMeta;
 use App\Filament\Resources\MetasResource\Pages\ListMetas;
 use App\Models\Language;
 use App\Models\ProductLang;
+use App\Models\Tag;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
@@ -39,12 +42,11 @@ class MetasResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return $schema
-            ->components([
+            ->schema([
                 TextInput::make('id_product')
                     ->label('ID Producto')
                     ->disabled()
                     ->dehydrated(false),
-
                 Select::make('id_lang')
                     ->label('Idioma')
                     ->options(Language::query()->pluck('name', 'id_lang'))
@@ -54,12 +56,20 @@ class MetasResource extends Resource
                 TextInput::make('name')
                     ->label('Nombre')
                     ->required()
-                    ->maxLength(128),
+                    ->maxLength(128)
+                    ->columnSpan(2),
+
+                Textarea::make('meta_description')
+                    ->label('Meta Description')
+                    ->rows(3)
+                    ->maxLength(512)
+                    ->columnSpan(2),
 
                 Textarea::make('description_short')
                     ->label('Descripción Corta')
                     ->rows(5)
-                    ->maxLength(65535),
+                    ->maxLength(65535)
+                    ->columnSpanFull(),
 
                 RichEditor::make('description')
                     ->label('Descripción')
@@ -67,20 +77,35 @@ class MetasResource extends Resource
 
                 TextInput::make('link_rewrite')
                     ->label('URL (link_rewrite)')
-                    ->maxLength(128),
+                    ->maxLength(128)
+                    ->columnSpan(2),
 
                 TextInput::make('meta_title')
                     ->label('Meta title')
-                    ->maxLength(128),
-            ]);
+                    ->maxLength(128)
+                    ->columnSpan(2),
+
+                TextInput::make('meta_keywords')
+                    ->label('Meta Keywords')
+                    ->maxLength(255)
+                    ->placeholder('palabra1, palabra2, palabra3')
+                    ->columnSpan(2),
+
+                TagsInput::make('tags')
+                    ->label('Tags')
+                    ->placeholder('Añadir tags...')
+                    ->columnSpan(2),
+            ])
+            ->columns(4);
     }
 
     public static function table(Table $table): Table
     {
         return $table
+            // Forzamos el orden por id_product explícitamente
+            ->defaultSort('id_product', 'desc')
             ->modifyQueryUsing(function (Builder $query): Builder {
-                return $query
-                    ->with(['language'])
+                return $query->with(['language'])
                     ->where(function (Builder $q): void {
                         $q->whereRaw("LENGTH(TRIM(COALESCE(description, ''))) = 0")
                             ->orWhereRaw("LENGTH(TRIM(COALESCE(description_short, ''))) = 0")
@@ -88,7 +113,6 @@ class MetasResource extends Resource
                             ->orWhereRaw("LENGTH(TRIM(COALESCE(meta_title, ''))) = 0");
                     });
             })
-            ->defaultSort('id_product')
             ->columns([
                 TextColumn::make('id_product')
                     ->label('ID')
@@ -178,7 +202,9 @@ class MetasResource extends Resource
             ->filters([
                 SelectFilter::make('id_lang')
                     ->label('Idioma')
-                    ->options(Language::query()->pluck('name', 'id_lang')),
+                    ->options(Language::query()->pluck('name', 'id_lang'))
+                    ->placeholder('Todos los idiomas')
+                    ->default(null),
 
                 Filter::make('con_campos_vacios')
                     ->label('Con campos vacíos')
@@ -192,7 +218,10 @@ class MetasResource extends Resource
                     }),
             ])
             ->recordActions([
-                \Filament\Actions\EditAction::make(),
+                \Filament\Actions\EditAction::make()
+                    ->url(fn($record) => static::getUrl('edit', [
+                        'record' => "{$record->id_product}-{$record->id_shop}-{$record->id_lang}"
+                    ])),
             ])
             ->bulkActions([]);
     }

@@ -65,7 +65,6 @@ class ProductSeoResource extends Resource
                             ->label('Nombre del Producto')
                             ->required()
                             ->maxLength(128)
-                            ->icon('heroicon-o-link')
                             ->columnSpan(2),
                         Textarea::make('description_short')
                             ->label('Descripción Corta')
