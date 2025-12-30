@@ -6,15 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::table('soft_email_template_lang', function (Blueprint $table) {
-            $table->id()->first();
+            if (!Schema::hasColumn('soft_email_template_lang', 'id')) {
+                $table->unsignedBigInteger('id')->first();
+            }
         });
     }
+
+
+    // public function up(): void
+    // {
+    //     Schema::table('soft_email_template_lang', function (Blueprint $table) {
+    //         $table->id()->first();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
