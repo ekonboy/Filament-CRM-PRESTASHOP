@@ -91,16 +91,23 @@ class EditEmailTemplate extends EditRecord
 
         if (isset($data['translations']) && is_array($data['translations'])) {
             foreach ($data['translations'] as $langId => $trans) {
-                EmailTemplateLang::updateOrCreate(
-                    [
-                        'id_template' => $record->id_email_template,
-                        'id_lang' => $langId,
-                    ],
-                    [
+                $existing = EmailTemplateLang::where('id_template', $record->id_email_template)
+                    ->where('id_lang', $langId)
+                    ->first();
+                
+                if ($existing) {
+                    $existing->update([
                         'subject' => $trans['subject'] ?? '',
                         'html_content' => $trans['html_content'] ?? '',
-                    ]
-                );
+                    ]);
+                } else {
+                    EmailTemplateLang::create([
+                        'id_template' => $record->id_email_template,
+                        'id_lang' => $langId,
+                        'subject' => $trans['subject'] ?? '',
+                        'html_content' => $trans['html_content'] ?? '',
+                    ]);
+                }
             }
         }
 

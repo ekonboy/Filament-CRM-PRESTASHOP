@@ -82,8 +82,10 @@ class OrderTrackingResource extends Resource
                     ->label('Estado')
                     ->badge()
                     ->color(fn (string $state) => match ($state) {
-                        'Enviado', 'Pago aceptado', 'Entregado' => 'success',
-                        'Cancelado' => 'danger',
+                        'Canceled' => 'danger', // Priorizar este caso
+                        'Enviado', 'Pago aceptado', 'Entregado', 'Payment accepted', 'Delivered', 'Shipped' => 'success',
+                        'Cancelado', 'canceled', 'Cancelled', 'CANCELED' => 'danger',
+                        'Error de pago', 'Payment error' => 'danger',
                         default => 'warning',
                     }),
 

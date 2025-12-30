@@ -8,6 +8,7 @@ class EmailTemplateLang extends Model
 {
     protected $table = 'soft_email_template_lang';
     public $timestamps = false;
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id_template',
